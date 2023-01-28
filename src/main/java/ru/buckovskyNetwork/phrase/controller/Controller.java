@@ -31,4 +31,18 @@ public class Controller {
         log.info("End endpoint TEST: {}", response);
         return response;
     }
+
+    @PostMapping("/test1")
+    public ResponseEntity<Response> test1(){
+        log.info("Start endpoint test1 TEST");
+        ResponseEntity<Response> response = phraseService.test1();
+        log.info("End endpoint test1 TEST: {}", response);
+        return response;
+    }
+
+    @PostMapping("/test2")
+    public ResponseEntity<Response> test2(){
+        ResponseEntity<Response> response = phraseService.test2();
+        return response;
+    }
 }

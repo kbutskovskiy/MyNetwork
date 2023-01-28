@@ -9,5 +9,4 @@ public class MyNetworkApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MyNetworkApplication.class, args);
 	}
-
 }
