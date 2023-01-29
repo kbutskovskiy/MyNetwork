@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import ru.buckovskyNetwork.phrase.util.ValidationUtils;
+import ru.buckovskyNetwork.phrase.domen.api.RegistrationReq;
 import ru.buckovskyNetwork.phrase.domen.response.ErrorResponse;
 import ru.buckovskyNetwork.phrase.domen.response.Response;
 import ru.buckovskyNetwork.phrase.domen.response.Error;
@@ -30,7 +32,14 @@ public class PhraseServiceImpl implements PhraseService {
 
     @Override
     public ResponseEntity<Response> test2(){
-        int x = 1/0;
         throw CommonException.builder().code(Errors.TEST).message("Test2").httpStatus(HttpStatus.BAD_REQUEST).build();
+    }
+
+    private final ValidationUtils validationUtils;
+
+    @Override
+    public ResponseEntity<Response> registration(RegistrationReq req){
+        validationUtils.validationRequest(req);
+        return new ResponseEntity<Response>((SuccessResponse.builder().data("Всё отлично").build()), HttpStatus.OK);
     }
 }
