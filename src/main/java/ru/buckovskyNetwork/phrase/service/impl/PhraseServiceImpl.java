@@ -21,25 +21,26 @@ import ru.buckovskyNetwork.phrase.service.PhraseService;
 public class PhraseServiceImpl implements PhraseService {
     @Override
     public ResponseEntity<Response> test(){
-        return new ResponseEntity<>(SuccessResponse.builder().data("Hello").build(), HttpStatus.OK);
+        return new ResponseEntity<>(SuccessResponse.builder().data("тест на хороший ответ пройден").build(), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<Response> test1(){
-        return new ResponseEntity<>(ErrorResponse.builder().error(Error.builder().code(Errors.TEST).message("Я люблю Катюшу").build()).build(),
+        return new ResponseEntity<>(ErrorResponse.builder().error(Error.builder().code(Errors.TEST).message("Тест на плохой ответ пройден").build()).build(),
                 HttpStatus.BAD_REQUEST);
     }
 
     @Override
     public ResponseEntity<Response> test2(){
-        throw CommonException.builder().code(Errors.TEST).message("Test2").httpStatus(HttpStatus.BAD_REQUEST).build();
+        throw CommonException.builder().code(Errors.TEST).message("Тест на обработку исключений пройден").httpStatus(HttpStatus.BAD_REQUEST).build();
     }
 
     private final ValidationUtils validationUtils;
 
     @Override
     public ResponseEntity<Response> registration(RegistrationReq req){
+
         validationUtils.validationRequest(req);
-        return new ResponseEntity<Response>((SuccessResponse.builder().data("Всё отлично").build()), HttpStatus.OK);
+        return new ResponseEntity<Response>((SuccessResponse.builder().data("Всё отлично, валидация прошла успешно").build()), HttpStatus.OK);
     }
 }

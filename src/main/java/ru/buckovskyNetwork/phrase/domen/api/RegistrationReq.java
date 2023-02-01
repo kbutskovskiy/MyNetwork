@@ -1,6 +1,5 @@
 package ru.buckovskyNetwork.phrase.domen.api;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +19,6 @@ public class RegistrationReq {
     private String nickname;
 
     @NotBlank(message = "password должен быть заполнен")
-    @Pattern(regexp = "^[a-zA-Zа-яА-Я0-9.,:; _-?@]{8,100}$", message = "Некорректный password")
+    @Pattern(regexp = "^[a-zA-Zа-яА-Я0-9.,:; _?@]{8,100}$", message = "Некорректный password")
     private String password;
 }

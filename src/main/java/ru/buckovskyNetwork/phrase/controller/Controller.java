@@ -46,6 +46,7 @@ public class Controller {
 
     @PostMapping("/registration")
     public ResponseEntity<Response> registration(@RequestBody final RegistrationReq req){
+
         log.info("START endpoint registration: {}", req);
         ResponseEntity<Response> response = phraseService.registration(req);
         log.info("END endpoint registration: {}", req);
